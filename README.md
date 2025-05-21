@@ -50,11 +50,11 @@ MedSchedule/
 
 ### 💻 Interface Web (Frontend)
 
-![Tela Inicial](https://via.placeholder.com/800x400?text=Frontend+-+Tela+Inicial)
+![Tela Inicial](./assets/tela-inicial.png)
 
 ### 🧪 API com Swagger (Backend)
 
-![Swagger UI](https://via.placeholder.com/800x400?text=Swagger+-+API+Documentation)
+![Swagger UI](./assets/APIcomSwagger.png)
 
 ---
 
