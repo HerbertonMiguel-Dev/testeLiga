@@ -117,8 +117,8 @@ A interface foi construída com **Styled-Components** e **media queries**, adapt
 ## 📬 Contato
 
 Caso tenha dúvidas ou sugestões, entre em contato:
-- 📧 Email: contato@seudominio.com
-- 💼 LinkedIn: [Seu Nome](https://www.linkedin.com/in/seunome)
+- 📧 Email: herbertonmiguel@gmail.com
+- 💼 LinkedIn: [Herberton Miguel](https://www.linkedin.com/in/herbertonmiguel/)
 
 ---
 
