@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./MedScheduleApi # Caminho para o Dockerfile do backend
+      dockerfile: Dockerfile
+    ports:
+      - "5081:5081" # Mapeia a porta do host para a porta do contêiner
+    environment:
+      # Se você usar SQLite, o arquivo .db estará dentro do contêiner.
+      # Se usar outro banco de dados (SQL Server, etc.), configure a connection string aqui.
+      # Exemplo para SQL Server:
+      # - ConnectionStrings__DefaultConnection=Server=db;Database=MedScheduleDb;User Id=sa;Password=YourStrong(!)Password;
+      # Se usar In-Memory, não precisa de connection string.
+      - ASPNETCORE_URLS=http://+:5081 # Define a URL que o ASP.NET Core vai ouvir dentro do contêiner
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      # Opcional, para debug: montar o código fonte para hot-reloading (não recomendado para produção)
+      # - ./MedScheduleApi:/app
+      - /app/out/Logs # Se você tiver uma pasta de logs no backend para persistir
+    # network_mode: host # Pode ser útil para testes, mas evite em produção
+    networks:
+      - medschedule-network
+
+  frontend:
+    build:
+      context: ./frontend # Caminho para o Dockerfile do frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80" # Mapeia a porta 3000 do host para a porta 80 do contêiner (Nginx)
+    depends_on:
+      - backend # Garante que o backend inicie antes do frontend
+    # environment:
+      # Exemplo se o frontend precisar saber o IP do backend (não é o caso se usar o nome do serviço)
+      # - REACT_APP_API_URL=http://backend:5081/api
+    networks:
+      - medschedule-network
+
+networks:
+  medschedule-network:
+    driver: bridge

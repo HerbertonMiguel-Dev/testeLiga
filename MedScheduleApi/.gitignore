@@ -1,0 +1,97 @@
+# General
+.DS_Store
+.vscode/
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+build/
+*.log
+*.vspscc
+*.vssscc
+
+# Test results
+TestResults/
+*.trx
+*.grx
+
+# NuGet packages
+packages/
+*.nupkg
+.nuget/nuget.g.props
+.nuget/nuget.g.targets
+
+# Visual Studio files
+.vs/
+*.suo
+*.user
+*.pdb
+*.lib
+*.sbr
+*.res
+*.pch
+*.ipch
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+*.tlog
+*.vcproj.filters
+*.vcxproj.user
+*.rc.user
+*.deploy
+*.bak
+*.orig
+*.obj
+*.opt
+*.filters
+*.userprefs
+*.dbmdl
+*.dbproj.user
+*.ruleset
+
+# Rider
+.idea/
+
+# Dotnet tool restore
+.config/dotnet-tools.json
+
+# Local history files
+.history/
+
+# User-specific local settings
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.json.user
+appsettings.json.bak
+
+# Docker files
+Dockerfile.bak
+
+# Node.js (if any frontend development is done directly in backend folder)
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Mac
+.DS_Store
+
+# Misc
+*.pid
+*.socket
+*.lock
+*.swp
+*~
+# Ignore everything in the "wwwroot" folder except for "wwwroot" itself
+# wwwroot/*
+# !wwwroot/
+# This is usually only needed if you are building the frontend into wwwroot
+# For a separate frontend project, wwwroot might contain static assets you want to commit.
+# Review this based on your project's specific static file serving.
+
+# In-Memory Database files (if a file-based In-Memory DB is used, though not typical)
+*.db
