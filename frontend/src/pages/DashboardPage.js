@@ -172,12 +172,7 @@ function DashboardPage() {
   };
 
   const handleAgendarConsulta = async () => {
-    console.log("[DashboardPage - handleAgendarConsulta] Chamado.");
-    console.log("[DashboardPage - handleAgendarConsulta] Valor de selectedSlot no momento da chamada:", selectedSlot);
-    console.log("[DashboardPage - handleAgendarConsulta] Paciente:", paciente);
-    console.log("[DashboardPage - handleAgendamento] EspecialidadeAgendamento:", especialidadeAgendamento);
-    console.log("[DashboardPage - handleAgendamento] ConvenioAgendamento:", convenioAgendamento);
-    console.log("[DashboardPage - handleAgendamento] DataAgendamento:", dataAgendamento);
+
 
     if (!paciente || !especialidadeAgendamento || !convenioAgendamento || !selectedSlot) {
       alert("Por favor, preencha todos os campos e selecione um horário para agendar.");
