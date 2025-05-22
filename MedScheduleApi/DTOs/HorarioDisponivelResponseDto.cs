@@ -10,6 +10,6 @@ namespace MedScheduleApi.DTOs
         public bool Disponivel { get; set; }
         public int? AgendamentoId { get; set; }
         public string? Paciente { get; set; }
-        public string medico { get; set; } = string.Empty;
+        public string Medico { get; set; } = string.Empty;
     }
 }

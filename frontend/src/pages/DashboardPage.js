@@ -180,7 +180,7 @@ function DashboardPage() {
       return;
     }
 
-    if (!selectedSlot.medico) { 
+    if (!selectedSlot.medico) {
       alert("Erro: O nome do médico selecionado não foi encontrado no slot. Por favor, tente selecionar o horário novamente ou contate o suporte.");
       console.error("[DashboardPage - handleAgendarConsulta] selectedSlot não contém medico (propriedade do DTO do backend):", selectedSlot);
       return;
@@ -188,36 +188,36 @@ function DashboardPage() {
 
     try {
       const dadosAgendamento = {
-        Paciente: paciente, 
+        Paciente: paciente,
         EspecialidadeId: parseInt(especialidadeAgendamento),
         ConvenioId: parseInt(convenioAgendamento),
         DataHora: `${dataAgendamento}T${selectedSlot.horaInicio}:00`,
-        Medico: selectedSlot.medico 
+        Medico: selectedSlot.medico
       };
 
       console.log('[DashboardPage - handleAgendarConsulta] Dados a serem enviados para agendamento:', dadosAgendamento);
 
       const response = await postAgendamento(dadosAgendamento);
-      
+
       if (response && response.id) {
-          alert('Consulta agendada com sucesso! ID: ' + response.id);
-          setPaciente('');
-          setEspecialidadeAgendamento('');
-          setConvenioAgendamento('');
-          setDataAgendamento('');
-          setMedicoFiltro('');
-          setHorarios([]);
-          setSelectedSlot(null);
-          fetchAgendamentosData();
+        alert('Consulta agendada com sucesso! ID: ' + response.id);
+        setPaciente('');
+        setEspecialidadeAgendamento('');
+        setConvenioAgendamento('');
+        setDataAgendamento('');
+        setMedicoFiltro('');
+        setHorarios([]);
+        setSelectedSlot(null);
+        fetchAgendamentosData();
       } else {
-          let errorMessage = 'Erro ao agendar consulta.';
-          if (response && response.errors) {
-              errorMessage += ' Detalhes: ' + Object.values(response.errors).flat().join(", ");
-          } else if (response && response.message) {
-              errorMessage += ' Detalhes: ' + response.message;
-          }
-          alert(errorMessage);
-          console.error('[DashboardPage - handleAgendarConsulta] Resposta de erro do backend:', response);
+        let errorMessage = 'Erro ao agendar consulta.';
+        if (response && response.errors) {
+          errorMessage += ' Detalhes: ' + Object.values(response.errors).flat().join(", ");
+        } else if (response && response.message) {
+          errorMessage += ' Detalhes: ' + response.message;
+        }
+        alert(errorMessage);
+        console.error('[DashboardPage - handleAgendarConsulta] Resposta de erro do backend:', response);
       }
     } catch (err) {
       console.error('[DashboardPage - handleAgendarConsulta] Erro ao agendar consulta (erro de rede/conexão):', err);
@@ -251,14 +251,18 @@ function DashboardPage() {
       case '/':
         return (
           <>
-            <H1>Bem-vindo ao MedSchedule!</H1>
-            <P>Gerencie seus agendamentos e atendimentos de forma simples e eficiente.</P>
+            <div style={{ textAlign: 'center' }}>
+              <H1>Bem-vindo ao MedSchedule!</H1>
+              <P>Gerencie seus agendamentos e atendimentos de forma simples e eficiente.</P>
+
+            </div>
+
             {formLoading ? (
-                <P>Carregando dados para InfoCards...</P>
+              <P>Carregando dados para InfoCards...</P>
             ) : formError ? (
-                <P style={{ color: 'var(--danger-color)' }}>{formError}</P>
+              <P style={{ color: 'var(--danger-color)' }}>{formError}</P>
             ) : (
-                <InfoCards especialidades={especialidadesInfo} convenios={conveniosInfo} />
+              <InfoCards especialidades={especialidadesInfo} convenios={conveniosInfo} />
             )}
           </>
         );
@@ -267,36 +271,36 @@ function DashboardPage() {
           <>
             <H1>Gerenciar Agendamentos</H1>
             {formLoading ? (
-                <P>Carregando formulário de agendamento...</P>
+              <P>Carregando formulário de agendamento...</P>
             ) : formError ? (
-                <P style={{ color: 'var(--danger-color)' }}>{formError}</P>
+              <P style={{ color: 'var(--danger-color)' }}>{formError}</P>
             ) : (
-                <AgendamentoForm
-                  paciente={paciente}
-                  setPaciente={setPaciente}
-                  especialidadeAgendamento={especialidadeAgendamento}
-                  setEspecialidadeAgendamento={handleEspecialidadeChange}
-                  especialidades={especialidadesForm}
-                  convenioAgendamento={convenioAgendamento}
-                  setConvenioAgendamento={setConvenioAgendamento}
-                  convenios={conveniosForm}
-                  dataAgendamento={dataAgendamento}
-                  setDataAgendamento={handleDataChange}
-                  medicoFiltro={medicoFiltro}
-                  setMedicoFiltro={handleMedicoFiltroChange}
-                  horarios={horarios} // Passando os horários com o ID único
-                  selectedSlot={selectedSlot}
-                  setSelectedSlot={setSelectedSlot}
-                  handleVerificarHorarios={handleVerificarHorarios}
-                  handleAgendarConsulta={handleAgendarConsulta}
-                />
+              <AgendamentoForm
+                paciente={paciente}
+                setPaciente={setPaciente}
+                especialidadeAgendamento={especialidadeAgendamento}
+                setEspecialidadeAgendamento={handleEspecialidadeChange}
+                especialidades={especialidadesForm}
+                convenioAgendamento={convenioAgendamento}
+                setConvenioAgendamento={setConvenioAgendamento}
+                convenios={conveniosForm}
+                dataAgendamento={dataAgendamento}
+                setDataAgendamento={handleDataChange}
+                medicoFiltro={medicoFiltro}
+                setMedicoFiltro={handleMedicoFiltroChange}
+                horarios={horarios} // Passando os horários com o ID único
+                selectedSlot={selectedSlot}
+                setSelectedSlot={setSelectedSlot}
+                handleVerificarHorarios={handleVerificarHorarios}
+                handleAgendarConsulta={handleAgendarConsulta}
+              />
             )}
-            
+
             <H1 style={{ marginTop: 'var(--spacing-xl)' }}>Lista de Agendamentos</H1>
             {agendamentos.length === 0 && !loading && !error ? (
-                <P>Nenhum agendamento encontrado.</P>
+              <P>Nenhum agendamento encontrado.</P>
             ) : (
-                <AgendamentosList agendamentos={agendamentos} handleMarcarAtendimento={handleMarcarAtendimento} />
+              <AgendamentosList agendamentos={agendamentos} handleMarcarAtendimento={handleMarcarAtendimento} />
             )}
           </>
         );
@@ -305,9 +309,9 @@ function DashboardPage() {
           <>
             <H1>Histórico de Atendimentos</H1>
             {atendimentos.length === 0 && !loading && !error ? (
-                <P>Nenhum atendimento encontrado.</P>
+              <P>Nenhum atendimento encontrado.</P>
             ) : (
-                <AtendimentosList atendimentos={atendimentos} />
+              <AtendimentosList atendimentos={atendimentos} />
             )}
           </>
         );

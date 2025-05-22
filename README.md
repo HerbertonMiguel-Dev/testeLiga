@@ -85,9 +85,17 @@ MedSchedule/
 
 ## 🖼️ Imagens do Projeto
 
-### 💻 Interface Web (Frontend)
+### 💻 Interface Web (Frontend)- Home
 
-![Tela Inicial](./assets/tela-inicial.png)
+![Tela Inicial](./assets/home.png)
+
+### 💻 Interface Web (Frontend)- Agendamentos
+
+![Tela Inicial](./assets/agendamento.png)
+
+### 💻 Interface Web (Frontend)- Atendimentos
+
+![Tela Inicial](./assets/atendimentos.png)
 
 ### 🧪 API com Swagger (Backend)
 
