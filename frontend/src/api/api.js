@@ -2,8 +2,8 @@
 
 import axios from 'axios';
 
-// Mude de 'http://localhost:5081/api' para o nome do serviço Docker do backend
-const API_BASE_URL = 'http://localhost:5081/api'; // <<<<<<< MUDANÇA AQUI!
+
+const API_BASE_URL = 'http://localhost:5081/api'; 
 
 export const getEspecialidades = async () => {
     const response = await fetch(`${API_BASE_URL}/especialidades`);
