@@ -14,23 +14,60 @@ A orquestração é feita com **Docker Compose**, facilitando o deploy de ambos 
 
 ```
 MedSchedule/
-├── MedScheduleApi/       # Backend (ASP.NET Core)
-│   ├── Controllers/
-│   ├── Models/
-│   ├── Services/
-│   ├── Data/
+├── MedScheduleApi/               # Backend (ASP.NET Core)
+│   ├── bin/
+│   ├── Controllers/              # Controles da API
+│   │   └── AgendamentosController.cs
+│   ├── Data/                     # Contexto do Banco de Dados, Migrations, etc.
+│   ├── DTOs/                     # Data Transfer Objects (Requisição/Resposta)
+│   │   ├── AgendamentoRequestDto.cs
+│   │   └── HorarioDisponivelResponseDto.cs
+│   ├── Models/                   # Modelos de Entidade (EF Core)
+│   ├── obj/
+│   ├── Properties/
+│   ├── Services/                 # Lógica de Negócio (ex: AgendamentoService)
+│   │   └── AgendamentoService.cs
+│   ├── .gitignore
+│   ├── appsettings.Development.json
 │   ├── appsettings.json
-│   ├── Program.cs
-│   └── Dockerfile
-├── frontend/             # Frontend (React)
+│   ├── Dockerfile
+│   ├── MedScheduleApi.csproj
+│   ├── MedScheduleApi.http
+│   ├── Program.cs                # Ponto de entrada da aplicação .NET
+│   └── docker-compose.yml        # (Não está na imagem, mas é para o projeto Docker geral)
+├── frontend/                     # Frontend (React)
+│   ├── assets/
+│   ├── node_modules/
 │   ├── public/
 │   ├── src/
-│   │   ├── api.js
-│   │   ├── App.js
-│   │   └── styles/
-│   └── Dockerfile
-├── docker-compose.yml    # Arquivo de orquestração Docker
-└── README.md             # Este arquivo
+│   │   ├── api/                  # Funções para interagir com a API do backend
+│   │   │   └── api.js
+│   │   ├── components/           # Componentes React reutilizáveis
+│   │   │   ├── Common/
+│   │   │   │   ├── Button/
+│   │   │   │   ├── Input/
+│   │   │   │   ├── Select/
+│   │   │   │   └── Text/
+│   │   │   └── MedSchedule/
+│   │   │       ├── AgendamentoForm/
+│   │   │       ├── AgendamentosList/
+│   │   │       ├── AtendimentosList/
+│   │   │       └── InfoCards/
+│   │   ├── pages/                # Páginas principais da aplicação
+│   │   │   └── DashboardPage/
+│   │   │       └── DashboardPage.js
+│   │   ├── styles/               # Arquivos de estilo globais ou temas
+│   │   ├── App.css
+│   │   ├── App.js                # Componente principal da aplicação
+│   │   ├── index.css
+│   │   └── index.js              # Ponto de entrada do React
+│   ├── .gitignore
+│   ├── Dockerfile
+│   ├── nginx.conf                # (Se você estiver usando Nginx para servir o frontend)
+│   ├── package-lock.json
+│   └── package.json
+├── docker-compose.yml            # Arquivo de orquestração Docker para ambos (backend e frontend)
+└── README.md
 ```
 
 ---
