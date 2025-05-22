@@ -4,12 +4,12 @@ export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   margin-top: var(--spacing-lg);
-  display: block; 
-  overflow-x: auto; 
-  white-space: nowrap; 
+  display: block;
+  overflow-x: auto;
+  white-space: nowrap;
   border-radius: var(--border-radius-md);
-  overflow: hidden; 
-  box-shadow: var(--shadow-medium); 
+  overflow: hidden;
+  box-shadow: var(--shadow-medium);
 `;
 
 export const StyledThead = styled.thead`
@@ -17,7 +17,7 @@ export const StyledThead = styled.thead`
   color: var(--text-color-light);
 
   @media (max-width: 768px) {
-    display: none; /* Esconde o cabeçalho original em telas pequenas */
+    display: none;
   }
 `;
 
@@ -34,7 +34,7 @@ export const StyledTr = styled.tr`
   }
 
   &:hover {
-    background-color: #e9ecef; /* Cor mais clara ao passar o mouse */
+    background-color: #e9ecef;
   }
 
   @media (max-width: 768px) {
@@ -45,8 +45,8 @@ export const StyledTr = styled.tr`
     padding: var(--spacing-md);
     background-color: var(--background-card);
     box-shadow: var(--shadow-light);
-    display: flex; 
-    flex-wrap: wrap; 
+    display: flex;
+    flex-wrap: wrap;
   }
 `;
 
@@ -54,7 +54,8 @@ export const StyledTh = styled.th`
   padding: var(--spacing-sm) var(--spacing-md);
   text-align: left;
   border-bottom: 1px solid var(--border-color);
-  white-space: normal; 
+  white-space: normal;
+
   &:last-child {
     border-right: none;
   }
@@ -68,17 +69,17 @@ export const StyledTd = styled.td`
 
   @media (max-width: 768px) {
     display: block;
-    text-align: right; 
-    padding-left: 50%; 
+    text-align: right;
+    padding-left: 50%;
     position: relative;
-    border: none; 
+    border: none;
     width: 100%;
 
     &::before {
       content: attr(data-label);
       position: absolute;
-      left: var(--spacing-sm); 
-      width: calc(50% - var(--spacing-md)); 
+      left: var(--spacing-sm);
+      width: calc(50% - var(--spacing-md));
       padding-right: var(--spacing-sm);
       white-space: nowrap;
       text-align: left;

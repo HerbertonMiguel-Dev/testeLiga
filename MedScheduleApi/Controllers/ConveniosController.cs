@@ -20,7 +20,6 @@ namespace MedScheduleApi.Controllers
             _context = context;
         }
 
-        // POST: api/Convenios
         [HttpPost]
         public async Task<ActionResult<ConvenioDto>> PostConvenio([FromBody] ConvenioDto convenioDto)
         {
@@ -33,11 +32,10 @@ namespace MedScheduleApi.Controllers
             _context.Convenios.Add(convenio);
             await _context.SaveChangesAsync();
 
-            convenioDto.Id = convenio.Id; // Retorna o ID gerado
+            convenioDto.Id = convenio.Id;
             return CreatedAtAction(nameof(GetConvenios), new { id = convenio.Id }, convenioDto);
         }
 
-        // GET: api/Convenios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<ConvenioDto>>> GetConvenios()
         {

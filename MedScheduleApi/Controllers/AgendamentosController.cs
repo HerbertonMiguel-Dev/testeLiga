@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System; // Adicione para StringComparison.OrdinalIgnoreCase
+using System;
 
 namespace MedScheduleApi.Controllers
 {
@@ -24,7 +24,6 @@ namespace MedScheduleApi.Controllers
             _agendamentoService = agendamentoService;
         }
 
-        // POST: api/Agendamentos
         [HttpPost]
         public async Task<ActionResult<AgendamentoResponseDto>> PostAgendamento([FromBody] AgendamentoRequestDto agendamentoDto)
         {
@@ -40,11 +39,9 @@ namespace MedScheduleApi.Controllers
                 return BadRequest(new { message = "Não foi possível agendar a consulta. O horário pode estar indisponível, em conflito, ou dados inválidos." });
             }
 
-            // O AgendamentoService já retorna o DTO completo, incluindo Atendido.
             return CreatedAtAction(nameof(GetAgendamentos), new { id = agendamentoConfirmado.Id }, agendamentoConfirmado);
         }
 
-        // GET: api/Agendamentos (Para listar todos os agendamentos)
         [HttpGet]
         public async Task<ActionResult<IEnumerable<AgendamentoResponseDto>>> GetAgendamentos(
             [FromQuery] DateTime? dataInicio,
@@ -52,7 +49,6 @@ namespace MedScheduleApi.Controllers
             [FromQuery] string? paciente)
         {
             var query = _context.Agendamentos
-                // ***** ADIÇÃO: Incluir o Atendimento para popular 'Atendido' *****
                 .Include(a => a.Atendimento)
                 .AsQueryable();
 
@@ -80,7 +76,6 @@ namespace MedScheduleApi.Controllers
                     ConvenioNome = a.ConvenioNome,
                     DataHora = a.DataHora,
                     Medico = a.Medico,
-                    // ***** ADIÇÃO: Popula o campo Atendido *****
                     HasAtendimento = a.Atendimento != null
                 })
                 .ToListAsync();
@@ -88,14 +83,11 @@ namespace MedScheduleApi.Controllers
             return Ok(agendamentos);
         }
 
-        // ***** NOVO ENDPOINT: GET para Horários Disponíveis *****
-        // Geralmente, isso estaria em um AgendamentoController ou um controller de Disponibilidade,
-        // pois lida com a busca de slots, não com a criação/listagem de agendamentos reais.
         [HttpGet("HorariosDisponiveis")]
         public async Task<ActionResult<IEnumerable<HorarioDisponivelResponseDto>>> GetHorariosDisponiveis(
             [FromQuery] int especialidadeId,
             [FromQuery] DateTime data,
-            [FromQuery] string? medico) // Parâmetro opcional para filtrar por médico
+            [FromQuery] string? medico)
         {
             var requestDto = new DisponibilidadeListarRequestDto
             {

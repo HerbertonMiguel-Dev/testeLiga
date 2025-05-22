@@ -9,7 +9,7 @@ export const StyledButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: 1rem; /* Ajuste conforme necessário */
+  margin-top: 1rem;
 
   &:hover {
     background-color: #0056b3;
@@ -21,7 +21,6 @@ export const StyledButton = styled.button`
     opacity: 0.7;
   }
 
-  /* Exemplo de botão de atendimento */
   &.atender-button {
     background-color: var(--success-color);
     &:hover {

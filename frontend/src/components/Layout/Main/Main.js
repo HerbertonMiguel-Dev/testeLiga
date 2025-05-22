@@ -6,7 +6,7 @@ export const Main = styled.main`
   padding: 0 20px;
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* Espaçamento entre as seções */
+  gap: 2rem;
 
   @media (max-width: 768px) {
     padding: 0 15px;

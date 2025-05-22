@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MedScheduleApi.Controllers
 {
@@ -22,7 +24,6 @@ namespace MedScheduleApi.Controllers
             _agendamentoService = agendamentoService;
         }
 
-        // POST: api/Disponibilidades/definir
         [HttpPost("definir")]
         public async Task<ActionResult<Disponibilidade>> DefinirDisponibilidade([FromBody] DisponibilidadeDefinirDto disponibilidadeDto)
         {
@@ -31,7 +32,6 @@ namespace MedScheduleApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            // Validações adicionais de lógica
             if (!TimeSpan.TryParse(disponibilidadeDto.HoraInicio, out TimeSpan horaInicioTimeSpan))
             {
                 ModelState.AddModelError("HoraInicio", "Formato de hora de início inválido.");
@@ -54,7 +54,6 @@ namespace MedScheduleApi.Controllers
                 return NotFound(new { message = "Especialidade não encontrada." });
             }
 
-            // Converter DTO para Model
             var disponibilidade = new Disponibilidade
             {
                 Medico = disponibilidadeDto.Medico,
@@ -71,8 +70,6 @@ namespace MedScheduleApi.Controllers
             return CreatedAtAction(nameof(DefinirDisponibilidade), new { id = disponibilidade.Id }, disponibilidade);
         }
 
-        // POST: api/Disponibilidades
-        // Lista horários de marcação (com status de ocupação)
         [HttpPost]
         public async Task<ActionResult<IEnumerable<HorarioDisponivelResponseDto>>> ListarHorarios([FromBody] DisponibilidadeListarRequestDto request)
         {

@@ -1,8 +1,7 @@
 import styled from 'styled-components';
 
-// Definir alguns breakpoints comuns para facilitar
 const breakpoints = {
-  desktop: '1200px', // Usado para max-width da Main
+  desktop: '1200px',
   tablet: '768px',
   mobile: '480px',
 };
@@ -13,21 +12,21 @@ export const Header = styled.header`
   padding: 1rem 0;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 1.8rem; /* Tamanho da fonte padrão para desktop */
+  font-size: 1.8rem;
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 1.5rem; /* Menor em tablets */
+    font-size: 1.5rem;
     padding: 0.8rem 0;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 1.2rem; /* Ainda menor em celulares */
+    font-size: 1.2rem;
     padding: 0.5rem 0;
   }
 `;
 
 export const Main = styled.main`
-  max-width: 1200px; /* Mantém o máximo em desktop */
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
   background-color: #fff;
@@ -35,17 +34,17 @@ export const Main = styled.main`
   border-radius: 8px;
 
   @media (max-width: ${breakpoints.desktop}) {
-    max-width: 95%; /* Ocupa mais largura em telas menores que desktop mas maiores que tablet */
+    max-width: 95%;
     padding: 15px;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 10px auto; /* Margem menor em tablets */
+    margin: 10px auto;
     padding: 15px;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    margin: 5px auto; /* Margem mínima em celulares */
+    margin: 5px auto;
     padding: 10px;
   }
 `;
@@ -61,7 +60,7 @@ export const Section = styled.section`
     border-bottom: 2px solid #eee;
     padding-bottom: 10px;
     margin-bottom: 20px;
-    font-size: 1.6rem; /* Tamanho da fonte padrão */
+    font-size: 1.6rem;
 
     @media (max-width: ${breakpoints.tablet}) {
       font-size: 1.4rem;
@@ -86,10 +85,10 @@ export const CardListContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 20px;
-  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
+  flex-wrap: wrap;
 
   @media (max-width: ${breakpoints.tablet}) {
-    flex-direction: column; /* Em tablets, empilha as CardLists */
+    flex-direction: column;
     gap: 15px;
   }
 
@@ -99,8 +98,8 @@ export const CardListContainer = styled.div`
 `;
 
 export const CardList = styled.div`
-  flex: 1; /* Ocupa o espaço disponível em telas grandes */
-  min-width: 300px; /* Garante uma largura mínima antes de quebrar */
+  flex: 1;
+  min-width: 300px;
   padding: 10px;
   border: 1px solid #eee;
   border-radius: 5px;
@@ -137,9 +136,9 @@ export const CardList = styled.div`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    flex: unset; /* Remove o flex-grow, permitindo que cada CardList ocupe a largura total */
-    width: 100%; /* Ocupa a largura total em tablets e celulares */
-    min-width: unset; /* Remove a largura mínima */
+    flex: unset;
+    width: 100%;
+    min-width: unset;
   }
 `;
 
@@ -159,17 +158,16 @@ export const Form = styled.form`
     }
   }
 
-  /* Ajustar inputs e selects para telas menores */
   input[type="text"],
   input[type="date"],
   input[type="datetime-local"],
   select {
-    width: 100%; /* Ocupa a largura total do container pai */
+    width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    box-sizing: border-box; /* Garante que padding e border não adicionem largura extra */
+    box-sizing: border-box;
 
     @media (max-width: ${breakpoints.mobile}) {
       padding: 8px;
@@ -180,17 +178,17 @@ export const Form = styled.form`
 
 export const HorariosGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Padrão: 120px mínimo */
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
   gap: 10px;
   margin-top: 20px;
 
   @media (max-width: ${breakpoints.tablet}) {
-    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Diminui o min-width em tablets */
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
     gap: 8px;
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Ainda menor em celulares */
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 5px;
   }
 `;
@@ -203,7 +201,7 @@ export const HorarioItem = styled.div`
   text-align: center;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  font-size: 1rem; /* Tamanho da fonte padrão */
+  font-size: 1rem;
 
   &.ocupado {
     background-color: #ffcdd2;
@@ -231,7 +229,8 @@ export const HorarioItem = styled.div`
 
   @media (max-width: ${breakpoints.mobile}) {
     padding: 8px;
-    font-size: 0.9rem; /* Diminui a fonte */
+    font-size: 0.9rem;
+
     small {
       font-size: 0.75em;
     }
@@ -242,37 +241,35 @@ export const Filters = styled.div`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
-  flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha */
-  gap: 10px; /* Espaçamento entre os itens do filtro */
+  flex-wrap: wrap;
+  gap: 10px;
 
   label, input, button {
-    margin-right: 10px; /* Manter margem direita para espaçamento */
-    margin-bottom: 10px; /* Adiciona margem inferior para empilhamento */
-    flex-shrink: 0; /* Impede que os itens encolham demais */
+    margin-right: 10px;
+    margin-bottom: 10px;
+    flex-shrink: 0;
   }
 
-  /* Ajuste para inputs de filtro para ocupar mais espaço em telas pequenas */
   input[type="date"],
   input[type="text"] {
-    flex-grow: 1; /* Permite que cresçam para preencher o espaço */
-    min-width: 120px; /* Largura mínima para inputs de data/texto */
+    flex-grow: 1;
+    min-width: 120px;
   }
 
-  /* Em telas menores, os inputs e botões podem se empilhar melhor */
   @media (max-width: ${breakpoints.tablet}) {
-    flex-direction: column; /* Empilha os filtros */
-    align-items: flex-start; /* Alinha à esquerda */
-    gap: 5px; /* Reduz o gap */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
 
     label, input, button {
-      margin-right: 0; /* Remove margem direita quando empilhado */
-      width: 100%; /* Ocupa a largura total */
-      box-sizing: border-box; /* Garante que padding e border sejam incluídos no width */
+      margin-right: 0;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     input[type="date"],
     input[type="text"] {
-      max-width: 100%; /* Garante que não ultrapasse 100% da largura */
+      max-width: 100%;
     }
   }
 `;
@@ -285,7 +282,7 @@ export const ActionButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   font-size: 16px;
-  margin-top: 10px; /* Ajustado para separar do HorariosGrid ou formulário */
+  margin-top: 10px;
   margin-right: 10px;
   transition: background-color 0.2s ease;
 
@@ -299,23 +296,25 @@ export const ActionButton = styled.button`
   }
 
   @media (max-width: ${breakpoints.mobile}) {
-    width: 100%; /* Botões ocupam largura total em mobile */
+    width: 100%;
     margin-right: 0;
-    margin-bottom: 10px; /* Espaçamento entre botões empilhados */
-    padding: 12px 10px; /* Um pouco mais de padding vertical */
+    margin-bottom: 10px;
+    padding: 12px 10px;
     font-size: 15px;
   }
 `;
 
 export const AtenderButton = styled(ActionButton)`
   background-color: #ff9800;
-  margin-top: 0; /* Remove margem superior extra para não empurrar muito dentro da célula da tabela */
+  margin-top: 0;
+
   &:hover {
     background-color: #fb8c00;
   }
+
   @media (max-width: ${breakpoints.mobile}) {
-    width: auto; /* Pode ser menor em tabela para caber na célula */
-    padding: 8px 10px; /* Menor padding */
+    width: auto;
+    padding: 8px 10px;
     font-size: 14px;
   }
 `;
